@@ -31,7 +31,7 @@ public class User implements Serializable {
         this.passwrod = passwrod;
     }
 
-//    @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 

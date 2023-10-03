@@ -1,7 +1,7 @@
 package course.spring.resources;
 
-import course.spring.entities.User;
-import course.spring.service.UserService;
+import course.spring.entities.Category;
+import course.spring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/categories")
+public class CategoryResource {
     @Autowired
-    private UserService service;
+    private CategoryService service;
 
-    //getAll a List of Users
+    //getAll a List of Categorys
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        List<User> list = service.findAll();
+    public ResponseEntity<List<Category>> findAll() {
+        List<Category> list = service.finAll();
         return ResponseEntity.ok().body(list);
     }
 
-    //get user by Id
+    //get Category by Id
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User>findById(@PathVariable Long id){
-        User obj = service.findById(id);
+    public ResponseEntity<Category>findById(@PathVariable Long id){
+        Category obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 }
