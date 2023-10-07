@@ -1,5 +1,6 @@
 package course.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import course.spring.entities.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -12,7 +13,7 @@ import java.util.Objects;
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1l;
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
     private Double price;
 
@@ -41,7 +42,7 @@ public class OrderItem implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
-
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
